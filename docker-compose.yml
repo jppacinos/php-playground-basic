@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app80:
+    build:
+      context: .
+      args:
+        - php=8.0
+    ports:
+      - 8000:80
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - network80
+
+  app81:
+    build:
+      context: .
+      args:
+        - php=8.1
+    ports:
+      - 8001:80
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - network81
+
+  app82:
+    build:
+      context: .
+      args:
+        - php=8.2
+    ports:
+      - 8002:80
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - network82
+
+networks:
+  network80:
+    driver: bridge
+  network81:
+    driver: bridge
+  network82:
+    driver: bridge
